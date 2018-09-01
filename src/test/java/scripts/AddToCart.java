@@ -3,6 +3,7 @@ package scripts;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
@@ -10,6 +11,7 @@ import generic.BaseTest;
 import pom.ProductPage;
 import pom.Puma;
 import pom.PumaMenRunningShoe;
+import pom.ShoppingCartPage;
 
 public class AddToCart extends BaseTest
 {
@@ -21,6 +23,7 @@ public class AddToCart extends BaseTest
 		p.clickRunning();
 		
 		PumaMenRunningShoe pm=new PumaMenRunningShoe(driver);
+		String att = pm.getText();
 		pm.clickProduct();
 		
 		String parent=driver.getWindowHandle();
@@ -39,6 +42,11 @@ public class AddToCart extends BaseTest
 		if(pg.inStock().contains("In Stock"))
 		{
 			pg.clickaddtocart();
+			ShoppingCartPage sp=new ShoppingCartPage(driver);
+			String text = sp.gettext();
+			
+			Assert.assertEquals(text, att);
+			sp.clickCheckout();
 			
 		}
 		else

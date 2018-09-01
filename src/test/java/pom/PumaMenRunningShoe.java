@@ -20,6 +20,23 @@ public class PumaMenRunningShoe extends GenericPage
 	@FindBy(xpath="//ul[@class='products-grid products-grid--max-4-col first last odd']/li[4]/a/img")
 	private WebElement product;
 	
+	public String getText()
+	{
+		String att="";
+		WebDriverWait wait=new WebDriverWait(driver, 10);
+		try
+		{
+			wait.until(ExpectedConditions.visibilityOf(product));
+			att=product.getAttribute("Alt");
+			
+		}
+		catch(Exception e)
+		{
+			Reporter.log("product is not present"+e,true);
+			Assert.fail();
+		}
+		return att;
+	}
 	public void clickProduct() 
 	{
 		scroll(product);
