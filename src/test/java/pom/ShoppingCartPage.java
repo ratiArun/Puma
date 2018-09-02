@@ -26,7 +26,7 @@ public class ShoppingCartPage extends GenericPage
 		try
 		{
 			wait.until(ExpectedConditions.visibilityOf(product));
-			text=product.getText();
+			text=product.getAttribute("alt");
 			Reporter.log(text,true);
 		}
 		catch(Exception e)

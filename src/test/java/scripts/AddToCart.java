@@ -39,7 +39,7 @@ public class AddToCart extends BaseTest
 		pg.clicksizeDropdown();
 		pg.clickSize();
 		
-		if(pg.inStock().contains("In Stock"))
+		if(pg.inStock().contains("IN STOCK"))
 		{
 			pg.clickaddtocart();
 			ShoppingCartPage sp=new ShoppingCartPage(driver);

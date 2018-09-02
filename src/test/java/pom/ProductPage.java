@@ -34,7 +34,7 @@ public class ProductPage extends GenericPage
 		}
 	}
 	
-	@FindBy(xpath="//li[@class='option-7']") private WebElement size;
+	@FindBy(xpath="//span[@id='180~72']") private WebElement size;
 	
 	public void clickSize()
 	{
