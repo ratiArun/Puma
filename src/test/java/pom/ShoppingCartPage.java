@@ -25,9 +25,10 @@ public class ShoppingCartPage extends GenericPage
 		WebDriverWait wait=new WebDriverWait(driver, 10);
 		try
 		{
+			Thread.sleep(2000);
 			wait.until(ExpectedConditions.visibilityOf(product));
 			text=product.getAttribute("alt");
-			Reporter.log(text,true);
+			
 		}
 		catch(Exception e)
 		{

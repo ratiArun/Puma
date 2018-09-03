@@ -27,7 +27,7 @@ public class PumaMenRunningShoe extends GenericPage
 		try
 		{
 			wait.until(ExpectedConditions.visibilityOf(product));
-			att=product.getAttribute("Alt");
+			att=product.getAttribute("alt");
 			
 		}
 		catch(Exception e)
