@@ -18,6 +18,7 @@ public class AddToCart extends BaseTest
 	@Test
 	public void testAddToCart()
 	{
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		Puma p=new Puma(driver);
 		p.move();
 		p.clickRunning();
@@ -35,7 +36,7 @@ public class AddToCart extends BaseTest
 			driver.switchTo().window(w);
 		}
 		ProductPage pg=new ProductPage(driver);
-		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+		
 		pg.clicksizeDropdown();
 		pg.clickSize();
 		
