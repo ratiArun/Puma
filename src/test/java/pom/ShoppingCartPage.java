@@ -17,7 +17,7 @@ public class ShoppingCartPage extends GenericPage
 		super(driver);
 	}
 	
-	@FindBy(xpath="//tbody/tr[1]/td[@class='product-cart-image']") private WebElement product;
+	@FindBy(xpath="//tbody/tr[1]/td[@class='product-cart-image']//img") private WebElement product;
 	
 	public String gettext()
 	{

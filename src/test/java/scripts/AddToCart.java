@@ -8,6 +8,7 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import generic.BaseTest;
+import generic.Excel;
 import pom.ProductPage;
 import pom.Puma;
 import pom.PumaMenRunningShoe;
@@ -18,12 +19,19 @@ public class AddToCart extends BaseTest
 	@Test
 	public void testAddToCart()
 	{
+		String hpTitle=Excel.getData(PROPERTYFILE_PATH, "hpTitle");
+		String MenRunning=Excel.getData(PROPERTYFILE_PATH, "MenRunning");
+		String ProductPage=Excel.getData(PROPERTYFILE_PATH, "ProductPage");
+		String cart=Excel.getData(PROPERTYFILE_PATH, "cart");
+		
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		Puma p=new Puma(driver);
+		p.verifyTitle(hpTitle);
 		p.move();
 		p.clickRunning();
 		
 		PumaMenRunningShoe pm=new PumaMenRunningShoe(driver);
+		pm.verifyTitle(MenRunning);
 		String att = pm.getText();
 		pm.clickProduct();
 		
@@ -36,6 +44,7 @@ public class AddToCart extends BaseTest
 			driver.switchTo().window(w);
 		}
 		ProductPage pg=new ProductPage(driver);
+		pg.verifyTitle(ProductPage);
 		
 		pg.clicksizeDropdown();
 		pg.clickSize();
@@ -44,20 +53,20 @@ public class AddToCart extends BaseTest
 		{
 			pg.clickaddtocart();
 			ShoppingCartPage sp=new ShoppingCartPage(driver);
+			sp.verifyTitle(cart);
 			
 			String text = sp.gettext();
-			System.out.println(text);
-			System.out.println(att);
-//			try
-//			{
-//				Assert.assertEquals(att, text);
-//				
-//			}
-//			catch(Exception e)
-//			{
-//				Reporter.log("eleement is not matching",true);
-//				Assert.fail();
-//			}
+			try
+			{
+				Assert.assertEquals(att, text);
+				Reporter.log("product is same",true);
+				
+			}
+			catch(Exception e)
+			{
+				Reporter.log("eleement is not matching",true);
+				Assert.fail();
+			}
 			
 			sp.clickCheckout();
 			

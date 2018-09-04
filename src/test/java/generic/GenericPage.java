@@ -20,9 +20,7 @@ public abstract class GenericPage
 	public GenericPage(WebDriver driver)
 	{
 		this.driver=driver;
-		
 		PageFactory.initElements(driver,this);
-		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 	}
 	
@@ -32,6 +30,7 @@ public abstract class GenericPage
 		try
 		{
 			wait.until(ExpectedConditions.titleContains(title));
+			Reporter.log(title+" is matching",true);
 		}
 		catch(Exception e)
 		{
