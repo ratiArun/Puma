@@ -16,7 +16,7 @@ import pom.ShoppingCartPage;
 
 public class AddToCart extends BaseTest
 {
-	@Test
+	@Test 
 	public void testAddToCart()
 	{
 		String hpTitle=Excel.getData(PROPERTYFILE_PATH, "hpTitle");
