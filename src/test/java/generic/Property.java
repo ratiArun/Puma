@@ -5,7 +5,7 @@ import java.util.Properties;
 
 import org.testng.Reporter;
 
-public class Excel 
+public class Property 
 {
 	public static String getData(String path,String key)
 	{

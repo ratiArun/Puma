@@ -8,7 +8,7 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import generic.BaseTest;
-import generic.Excel;
+import generic.Property;
 import pom.ProductPage;
 import pom.Puma;
 import pom.PumaMenRunningShoe;
@@ -19,10 +19,10 @@ public class AddToCart extends BaseTest
 	@Test 
 	public void testAddToCart()
 	{
-		String hpTitle=Excel.getData(PROPERTYFILE_PATH, "hpTitle");
-		String MenRunning=Excel.getData(PROPERTYFILE_PATH, "MenRunning");
-		String ProductPage=Excel.getData(PROPERTYFILE_PATH, "ProductPage");
-		String cart=Excel.getData(PROPERTYFILE_PATH, "cart");
+		String hpTitle=Property.getData(PROPERTYFILE_PATH, "hpTitle");
+		String MenRunning=Property.getData(PROPERTYFILE_PATH, "MenRunning");
+		String ProductPage=Property.getData(PROPERTYFILE_PATH, "ProductPage");
+		String cart=Property.getData(PROPERTYFILE_PATH, "cart");
 		
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		Puma p=new Puma(driver);
