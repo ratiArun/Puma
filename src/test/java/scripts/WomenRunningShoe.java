@@ -15,7 +15,7 @@ import pom.WomenProductPage;
 
 public class WomenRunningShoe extends BaseTest
 {
-	@Test 
+	@Test
 	public void testWomenRunningShoe()
 	{
 		driver.manage().timeouts().pageLoadTimeout(25, TimeUnit.SECONDS);
