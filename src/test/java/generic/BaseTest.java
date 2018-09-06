@@ -1,12 +1,7 @@
 package generic;
 
-import java.io.File;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -34,18 +29,11 @@ public class BaseTest implements Constants
 	public void close(ITestResult r)
 	{
 		int status=r.getStatus();
-		
 		if(status==2)
 		{
 			try
 			{
-				Date d=new Date();
-				String s=d.toString();
-				String date=s.replaceAll(":", "-");
-				TakesScreenshot ts=(TakesScreenshot) driver;
-				File src=ts.getScreenshotAs(OutputType.FILE);
-				File dst=new File(PHOTO_PATH+date+".jpeg");
-				FileUtils.copyFile(src, dst);
+				GenericPage.takesScreenshot(driver,PHOTO_PATH);
 			}
 			catch(Exception e)
 			{

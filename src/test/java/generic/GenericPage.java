@@ -1,9 +1,14 @@
 package generic;
 
+import java.io.File;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -63,10 +68,26 @@ public abstract class GenericPage
 		{
 			Reporter.log("element is not present"+e,true);
 			Assert.fail();
+		}		
+	}
+
+	public static void takesScreenshot(WebDriver driver,String path)
+	{
+		try
+		{
+			Date d=new Date();
+			String s=d.toString();
+			String date=s.replaceAll(":", "-");
+			TakesScreenshot ts=(TakesScreenshot) driver;
+			File src=ts.getScreenshotAs(OutputType.FILE);
+			File dst=new File(path+date+".jpeg");
+			FileUtils.copyFile(src, dst);
 		}
-		
-		
-		
+		catch(Exception e)
+		{
+			Reporter.log("Ohoto path is invalid"+e,true);
+			Assert.fail();
+		}
 	}
 
 }
